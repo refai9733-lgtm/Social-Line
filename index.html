@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Line - خدمات التفعيل والاشتراكات</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #000000, #001f3f, #000000);
+            background-size: 400% 400%;
+            animation: gradientMove 15s ease infinite;
+            color: #e0e0e0;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("https://cdn.pixabay.com/photo/2023/01/08/15/23/artificial-intelligence-7704934_1280.jpg") center/cover no-repeat;
+            opacity: .12;
+            z-index: -1;
+        }
+        
+        header {
+            background: rgba(0, 0, 0, .95);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(79, 195, 247, .3)
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #4fc3f7;
+            text-shadow: 0 0 10px #4fc3f7
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem
+        }
+        
+        nav ul li a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 600;
+            padding: .5rem 1rem;
+            border-radius: 25px;
+            transition: .3s
+        }
+        
+        nav ul li a:hover,
+        nav ul li a.active {
+            background: #4fc3f7;
+            color: #000
+        }
+        
+        main {
+            padding-top: 80px
+        }
+        /* Hero */
+        
+        .hero {
+            text-align: center;
+            padding: 100px 0 60px;
+            background: rgba(0, 0, 0, .8);
+            border-radius: 20px;
+            margin: 20px;
+            box-shadow: 0 0 30px rgba(79, 195, 247, .5)
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            color: #81d4fa;
+            margin-bottom: 1rem
+        }
+        
+        .hero .animated-text {
+            font-size: 1.4rem;
+            color: #fff;
+            height: 40px;
+            overflow: hidden
+        }
+        
+        .hero .animated-text span {
+            display: block;
+            animation: slideText 9s infinite;
+        }
+        
+        @keyframes slideText {
+            0% {
+                transform: translateY(0)
+            }
+            25% {
+                transform: translateY(-40px)
+            }
+            50% {
+                transform: translateY(-80px)
+            }
+            75% {
+                transform: translateY(-120px)
+            }
+            100% {
+                transform: translateY(0)
+            }
+        }
+        
+        .btn-primary {
+            background: #4fc3f7;
+            color: #000;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: .3s
+        }
+        
+        .btn-primary:hover {
+            background: #81d4fa;
+            transform: translateY(-2px)
+        }
+        /* Services */
+        
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 40px 0
+        }
+        
+        .service-card {
+            background: rgba(15, 32, 64, .9);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(79, 195, 247, .2);
+            transition: .3s
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px)
+        }
+        
+        .service-price {
+            font-size: 1.5rem;
+            color: #4fffa0;
+            margin-bottom: 1.5rem
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 1rem
+        }
+        
+        .btn-subscribe,
+        .btn-details {
+            flex: 1;
+            padding: .8rem 1rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: .3s
+        }
+        
+        .btn-subscribe {
+            background: #25d366;
+            color: white
+        }
+        
+        .btn-subscribe:hover {
+            background: #128c7e
+        }
+        
+        .btn-details {
+            background: #4fc3f7;
+            color: white
+        }
+        
+        .btn-details:hover {
+            background: #81d4fa
+        }
+        /* واتساب ثابت */
+        
+        .whatsapp-chat {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, .4);
+            z-index: 1000
+        }
+        
+        .whatsapp-chat svg {
+            width: 35px;
+            fill: white
+        }
+        /* Reviews */
+        
+        .reviews {
+            background: rgba(0, 0, 0, .7);
+            padding: 40px;
+            margin: 40px 20px;
+            border-radius: 15px
+        }
+        
+        .reviews h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #4fc3f7
+        }
+        
+        .review-form {
+            margin-bottom: 30px;
+            text-align: center
+        }
+        
+        .review-form input,
+        .review-form textarea {
+            width: 100%;
+            max-width: 500px;
+            margin: 10px auto;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            display: block
+        }
+        
+        .review-form button {
+            background: #4fc3f7;
+            color: #000;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 20px;
+            font-weight: 700;
+            cursor: pointer
+        }
+        
+        .stars {
+            color: gray;
+            font-size: 1.5rem;
+            cursor: pointer
+        }
+        
+        .review-list {
+            margin-top: 20px;
+            display: grid;
+            gap: 15px
+        }
+        
+        .review-item {
+            background: rgba(15, 32, 64, .85);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, .3);
+            transition: .3s
+        }
+        
+        .review-item:hover {
+            transform: translateY(-5px)
+        }
+        
+        .review-item strong {
+            color: #4fc3f7
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">Social Line</div>
+            <ul>
+                <li><a href="#home" class="active">الرئيسية</a></li>
+                <li><a href="#services">خدماتنا</a></li>
+                <li><a href="#reviews">التقييمات</a></li>
+                <li><a href="#contact">اتصل بنا</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section id="home" class="hero">
+            <h1>استمتع بخدمات Social Line</h1>
+            <div class="animated-text">
+                <span>أفضل أسعار وتفعيل مضمون</span>
+                <span>خدمة عملاء سريعة وموثوقة</span>
+                <span>اشتراكات أصلية 100%</span>
+                <span>عروض حصرية يوميًا</span>
+            </div>
+            <button class="btn-primary" onclick="openWhatsApp('تواصل عام')">تواصل معنا</button>
+        </section>
+
+        <!-- Services -->
+        <section id="services">
+            <h2>خدماتنا</h2>
+            <div class="services">
+                <div class="service-card">
+                    <h3>Canva Pro</h3>
+                    <p>سريال Canva Pro مع مميزات كاملة.</p>
+                    <div class="service-price">150 جنيه</div>
+                    <div class="btn-group">
+                        <button class="btn-subscribe" onclick="openWhatsApp('اشتراك Canva Pro')">اشتراك</button>
+                        <button class="btn-details" onclick="alert('تفاصيل Canva Pro: مدة سنة كاملة')">تفاصيل</button>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <h3>Windows 10 Pro</h3>
+                    <p>سريال ويندوز 10 برو أصلي.</p>
+                    <div class="service-price">500 جنيه</div>
+                    <div class="btn-group">
+                        <button class="btn-subscribe" onclick="openWhatsApp('اشتراك Windows 10 Pro')">اشتراك</button>
+                        <button class="btn-details" onclick="alert('تفاصيل Windows: دعم وتحديثات رسمية')">تفاصيل</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews -->
+        <section id="reviews" class="reviews">
+            <h2>آراء العملاء</h2>
+            <form class="review-form" onsubmit="return addReview(event)">
+                <input type="text" id="reviewer" placeholder="اسمك" required>
+                <textarea id="reviewText" placeholder="اكتب تعليقك..." required></textarea>
+                <div id="starRating">
+                    <span class="stars" onclick="setRating(1)">★</span>
+                    <span class="stars" onclick="setRating(2)">★</span>
+                    <span class="stars" onclick="setRating(3)">★</span>
+                    <span class="stars" onclick="setRating(4)">★</span>
+                    <span class="stars" onclick="setRating(5)">★</span>
+                </div>
+                <button type="submit">إرسال</button>
+            </form>
+            <div class="review-list" id="reviewList"></div>
+        </section>
+    </main>
+
+    <!-- زر واتساب -->
+    <div class="whatsapp-chat" onclick="openWhatsApp('مرحبا')">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+    </div>
+
+    <script>
+        function openWhatsApp(service) {
+            window.open("https://wa.me/201020454462?text=أرغب%20في%20" + encodeURIComponent(service), "_blank");
+        }
+        let currentRating = 0;
+
+        function setRating(rating) {
+            currentRating = rating;
+            document.querySelectorAll('#starRating .stars').forEach((star, i) => {
+                star.style.color = (i < rating) ? 'gold' : 'gray';
+            });
+        }
+
+        function addReview(e) {
+            e.preventDefault();
+            const name = document.getElementById('reviewer').value;
+            const text = document.getElementById('reviewText').value;
+            if (!currentRating) {
+                alert("من فضلك اختر تقييم بالنجوم");
+                return false;
+            }
+            const reviewList = document.getElementById('reviewList');
+            const div = document.createElement('div');
+            div.classList.add('review-item');
+            div.innerHTML = `<strong>${name}</strong> ⭐${currentRating}<p>${text}</p>`;
+            reviewList.prepend(div);
+            e.target.reset();
+            currentRating = 0;
+            setRating(0);
+            return false;
+        }
+    </script>
+</body>
+
+</html>
